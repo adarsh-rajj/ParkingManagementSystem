@@ -1,0 +1,47 @@
+﻿@using BAL.ViewModel
+
+@model LoginViewModel
+@{
+    ViewBag.Title = "";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4 my-5">
+            <section class="card userform shadow-sm p-4">
+                <h2 class="text-center mb-4">Login</h2>
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new {@id = "loginForm"}))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "email", placeholder = "Email Address" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "password", placeholder = "Password" })
+                        </div>
+                        <div class="form-group form-check">
+                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-check-input" })
+                            @Html.LabelFor(m => m.RememberMe, new { @class = "form-check-label" })
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group text-center">
+                            <input class="btn btn-primary btn-block" type="submit" value="Log in" />
+                        </div>
+                    }
+            </section>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-3.7.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/Account/index.js"></script>
+}

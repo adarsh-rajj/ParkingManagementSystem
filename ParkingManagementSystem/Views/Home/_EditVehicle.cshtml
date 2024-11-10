@@ -1,0 +1,44 @@
+﻿@model BAL.ViewModel.VehicleRegistrationViewModel
+
+<div class="modal" id="Editvehicle" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-5">
+            <div class="modal-header justify-content-center ">
+                <h5 class="modal-title fw-bold fs-3">Edit Vehicle Registration</h5>
+            </div>
+            <div class="modal-body">
+                <form id="validateEditHome" method="post" class="mx-5">
+                    <div class="form-group">
+                        <label class="fw-bold">Vehicle Rc No Id</label>
+                        @Html.TextBoxFor(m => m.VehicleRcNoId, new { @class = "form-control", placeholder = "VehicleRcNoId", disabled = "disabled", @id = "VehicleRcNoId" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Vehicle Rc No</label>
+                        @Html.TextBoxFor(m => m.VehicleRCNo, new { @class = "form-control", placeholder = "Vehicle Registration No", @id = "VehicleRCNo" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Owner Name</label>
+                        @Html.TextBoxFor(m => m.OwnerName, new { @class = "form-control", placeholder = "Owner Name", @id = "OwnerName" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Model</label>
+                        @Html.TextBoxFor(m => m.Model, new { @class = "form-control", placeholder = "Vehicle Model", @id = "Model" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Date Of Registration</label>
+                        @Html.TextBoxFor(m => m.DateOfRegistration, new { @class = "form-control", placeholder = "Date of Registration", type = "date", @id = "DateOfRegistration" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Status</label>
+                        @Html.TextBoxFor(m => m.Status, new { @class = "form-control", placeholder = "Not-Parked", disabled = "disabled", @id = "Status" })
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary" onclick="UpdateRegistrationdata()">Update</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="ModelDismiss()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+

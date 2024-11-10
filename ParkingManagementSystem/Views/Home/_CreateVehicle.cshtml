@@ -1,0 +1,45 @@
+﻿@model BAL.ViewModel.VehicleRegistrationCreateModel
+
+<div class="modal" id="createvehicle" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-5">
+            <div class="modal-header justify-content-center ">
+                <h5 class="modal-title fw-bold fs-3">Register Vehicle</h5>
+            </div>
+            <div class="modal-body">
+                <form id="validateCreateHome" class="mx-5">
+                    <div class="form-group">
+                        <label class="fw-bold">VehicleRCNo</label>
+
+                        @Html.TextBoxFor(m => m.VehicleRCNo, new { @class = "form-control", @id = "VehicleRCNos", placeholder = "Vehicle Registration No" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">OwnerName</label>
+
+                        @Html.TextBoxFor(m => m.OwnerName, new { @class = "form-control", @id = "OwnerNames", placeholder = "Owner Name" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Model</label>
+
+                        @Html.TextBoxFor(m => m.Model, new { @class = "form-control", @id = "Models", placeholder = "Vehicle Model" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">DateOfRegistration</label>
+
+                        @Html.TextBoxFor(m => m.DateOfRegistration, new { @class = "form-control", @id = "DateOfRegistrations", placeholder = "Date of Registration", type = "date" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Status</label>
+
+                        @Html.TextBoxFor(m => m.Status, new { @class = "form-control", @id = "Statuss", placeholder = "Not-Parked", disabled = "disabled" })
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary" onclick="CreateRegistrationdata()">Create Registration</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="ModelDismiss()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+ 

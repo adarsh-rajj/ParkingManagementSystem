@@ -1,0 +1,59 @@
+﻿@model BAL.ViewModel.ParkingCreateViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <strong>Oops! Parking Seat Is Full.</strong>
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+else
+{
+    <div class="modal" id="createParking" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content p-5">
+                <div class="modal-header justify-content-center ">
+                    <h5 class="modal-title fw-bold fs-3">Add Allotment</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="allotmentForm" method="post" class="mx-5">
+                        <div class="form-group">
+                            <label class="fw-bold">Block No</label>
+                            @Html.DropDownList("BlockViewModel", (SelectList)ViewBag.Blocks, "Select block", new { @class = "form-control ms-1", @id = "BlockNos" })
+                        </div>
+                        <div class="form-group">
+                            <label class="fw-bold">Vehicle Rc No Id</label>
+                            @Html.DropDownList("VehicleRegistrationViewModel", (SelectList)ViewBag.Vehicles, "Select vechile rc", new { @class = "form-control ms-1", @id = "VehicleRcNoIds" })
+                        </div>
+                        <div class="form-group">
+                            <label class="fw-bold">Description</label>
+                            @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @id = "Descriptions", placeholder = "Description" })
+                        </div>
+                        <div class="form-group">
+                            <label class="fw-bold">Parking Date From</label>
+                            @Html.TextBoxFor(m => m.ParkingDateFrom, new { @class = "form-control", @id = "ParkingDateFroms", placeholder = "Parking Date From", type = "date" })
+                        </div>
+                        <div class="form-group">
+                            <label class="fw-bold">Parking Date To</label>
+                            @Html.TextBoxFor(m => m.ParkingDateTo, new { @class = "form-control", @id = "ParkingDateTos", placeholder = "Parking Date To", type = "date" })
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary" onclick="CreateParkingdata()">Allot Parking</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="ModelDismiss()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+ 

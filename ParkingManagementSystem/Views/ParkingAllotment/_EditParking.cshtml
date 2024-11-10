@@ -1,0 +1,46 @@
+﻿@model BAL.ViewModel.ParkingAllocationViewModel
+
+<div class="modal" id="editParking" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-5">
+            <div class="modal-header justify-content-center ">
+                <h5 class="modal-title fw-bold fs-3">Edit Parking Allocation</h5>
+            </div>
+            <div class="modal-body">
+                <form id="validateEditParking" class="mx-5">
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.AllocationId, new { @class = "form-control", placeholder = "Description", type = "hidden", disabled = "disabled", @id = "AllocationId" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Block No</label>
+                        @Html.DropDownListFor(m => m.BlockNo, new SelectList(""), "Select Block No", new { @class = "form-control selectpicker", @id = "BlockNo" })
+
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Vehicle Rc No Id</label>
+                        @Html.TextBoxFor(m => m.VehicleRcNoId, new { @class = "form-control", placeholder = "VehicleRcNoId", disabled = "disabled", @id = "VehicleRcNoId" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Description</label>
+                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Description", @id = "Description" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Parking Date From</label>
+                        @Html.TextBoxFor(m => m.ParkingDateFrom, new { @class = "form-control", placeholder = "Parking Date From", type = "date", @id = "ParkingDateFrom" })
+                    </div>
+                    <div class="form-group">
+                        <label class="fw-bold">Parking Date To</label>
+                        @Html.TextBoxFor(m => m.ParkingDateTo, new { @class = "form-control", placeholder = "Parking Date To", type = "date", @id = "ParkingDateTo" })
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m => m.PreviousBlock, new { @class = "form-control", type = "hidden", @id = "PreviousBlockNo" })
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary" onclick="UpdateParkingdata()">Update</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="ModelDismiss()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

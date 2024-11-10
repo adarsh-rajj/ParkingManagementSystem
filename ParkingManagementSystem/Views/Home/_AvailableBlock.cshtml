@@ -1,0 +1,21 @@
+﻿
+@model IEnumerable<BAL.ViewModel.BlockViewModel>
+
+<table id="VehicleRegistrationTable" class="display table table-bordered table-hover" style="width:100%">
+    <thead>
+        <tr>
+            <th>Block No</th>
+            <th>Available</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var available in Model)
+        {
+            <tr>
+                <td>@available.BlockNo</td>
+                <td>@available.Capacity</td>
+            </tr>
+        }
+    </tbody>
+</table>

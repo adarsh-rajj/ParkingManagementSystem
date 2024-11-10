@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center fw-bold">Parking Allocation</h2>
+
+<div class="form-group d-flex align-items-baseline justify-content-center my-4">
+    List Of Details
+    @Html.DropDownList("BlockViewModel", (SelectList)ViewBag.Blocks, "Select block no", new { @class = "form-control ms-1" })
+    <button id="loadData" onclick="loadData();" class="btn btn-outline-info ms-2">Apply</button>
+</div>
+
+<button class="btn btn-primary" onclick="CreateParking();">Create Parking</button>
+
+<table id="ParkingAllocationTable" class="display table table-bordered table-hover" style="width:100%">
+    <thead>
+        <tr>
+            <th>Block No</th>
+            <th>Vehicle RC No</th>
+            <th>Description</th>
+            <th>Parking Date From</th>
+            <th>Parking Date To</th>
+            <th>Created Date</th>
+            <th>Modified Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+</table>
+
+@Html.Partial("_CreateParking", new BAL.ViewModel.ParkingCreateViewModel())
+@Html.Partial("_EditParking", new BAL.ViewModel.ParkingAllocationViewModel())
+
+<link href="https://cdn.datatables.net/v/bs5/dt-2.1.8/datatables.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.1.8/datatables.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/ParkingAllotment/index.js"></script>
+}
+

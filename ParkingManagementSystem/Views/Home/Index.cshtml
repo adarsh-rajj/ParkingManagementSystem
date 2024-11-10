@@ -1,0 +1,79 @@
+﻿@model List<BAL.ViewModel.VehicleRegistrationViewModel>
+
+@using BOL.RoleName;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2 class="text-center fw-bold">Vehicle Registration</h2>
+
+<form id="filterForm" class="mt-4 d-flex justify-content-lg-between">
+    <div class="form-group">
+        <label>
+            <input type="radio" name="filter" value="parked" checked>
+            View Parked Two-Wheelers
+        </label>
+        @Html.DropDownList("BlockViewModel", (SelectList)ViewBag.Blocks, "Select Block No", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input type="radio" name="filter" value="status">
+            View Vehicle Status
+        </label>
+        @Html.DropDownList("VehicleRegistrationViewModel", (SelectList)ViewBag.Vehicles, "Select Vehicle Rc No", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input type="radio" name="filter" value="registered">
+            View Registered Vehicles Needing Parking
+        </label>
+    </div>
+    <div class="form-group">
+        <label>
+            <input type="radio" name="filter" value="capacity">
+            View Avaliability Block
+        </label>
+    </div>
+</form>
+
+<div class="d-flex justify-content-end">
+    <div id="results">
+        <button id="loadData" onclick="loadData();" class="btn btn-outline-info ms-2">Apply</button>
+    </div>
+</div>
+
+<button class="btn btn-primary" onclick="CreateVechile();">Add Registration</button>
+
+<table id="VehicleRegistrationTable" class="display table table-bordered table-hover" style="width:100%">
+    <thead>
+        <tr>
+            <th>Vehicle Rc No Id</th>
+            <th>Vehicle RC No</th>
+            <th>Owner Name</th>
+            <th>Model</th>
+            <th>Date Of Registration</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th>Modified Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+</table>
+@Html.Partial("_EditVehicle", new BAL.ViewModel.VehicleRegistrationViewModel())
+
+@Html.Partial("_CreateVehicle", new BAL.ViewModel.VehicleRegistrationCreateModel())
+
+<link href="https://cdn.datatables.net/v/bs5/dt-2.1.8/datatables.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.1.8/datatables.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Home/index.js"></script>
+}
+

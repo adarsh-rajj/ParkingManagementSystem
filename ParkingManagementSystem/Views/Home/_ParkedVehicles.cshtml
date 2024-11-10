@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BAL.ViewModel.VehicleRegistrationViewModel>
+
+<table id="VehicleRegistrationTable" class="display table table-bordered table-hover" style="width:100%">
+    <thead>
+        <tr>
+            <th>Vehicle Rc No Id</th>
+            <th>Vehicle RC No</th>
+            <th>Owner Name</th>
+            <th>Model</th>
+            <th>Date Of Registration</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th>Modified Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var vehicle in Model)
+        {
+            <tr>
+                <td>@vehicle.VehicleRcNoId</td>
+                <td>@vehicle.VehicleRCNo</td>
+                <td>@vehicle.OwnerName</td>
+                <td>@vehicle.Model</td>
+                <td>@vehicle.DateOfRegistration.ToString("yyyy-MM-dd")</td>
+                <td>@vehicle.Status</td>
+                <td>@vehicle.CreatedDate.ToString("yyyy-MM-dd")</td>
+                <td>@(vehicle.ModifiedDate.HasValue ? vehicle.ModifiedDate.Value.ToString("yyyy-MM-dd") : "N/A")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*<div>
+    @for (int i = 1; i <= Math.Ceiling((decimal)ViewBag.TotalCount / ViewBag.PageSize); i++)
+    {
+        <a href="@Url.Action("GetParkedVehicles", new { blockNo = ViewBag.BlockNo, pageNumber = i, pageSize = ViewBag.PageSize })">@i</a>
+    }
+</div>*@
